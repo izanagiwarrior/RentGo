@@ -14,13 +14,17 @@ class PageController extends Controller
     public function welcome(Request $request)
     {
         $product = Products::latest()->take(6)->get();
-        return view('welcome', compact('product'));
+        return view('users.welcome', compact('product'));
     }
 
     public function show(Request $request, $id)
     {
         $product = Products::find($id);
         dd($product);
+    }
+
+    public function contact(){
+        return view('users.contact');
     }
 
     public function katalog(Request $request, $search = "")
