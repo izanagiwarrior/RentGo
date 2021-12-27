@@ -7,16 +7,15 @@
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
                     <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6 d-none d-lg-block" style="background-image: url('{{asset("img/bg_3.jpg")}}'); background-position: center left;"></div>
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center mb-4">
-                                    <p class="text-title-login">login to</p>
-                                    <img src="{{asset('img/il_title_login.png')}}" width="200" alt="">
+                                    <p class="text-title-login">login to <a class="navbar-brand text-dark" href="index.html">Car<span class="text-success">Book</span></a></p>
                                 </div>
 
                                 @if ($errors->any())
-                                <div class="alert alert-danger border-left-danger" role="alert">
+                                <div class="alert alert-success border-left-success" role="alert">
                                     <ul class="pl-4 my-2">
                                         @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
@@ -39,22 +38,22 @@
                                     <div class="form-group mb-4">
                                         @if (Route::has('password.request'))
                                         <div class="text-center">
-                                            <a class="text-danger" href="{{ route('password.request') }}">
-                                                {{ __('Forgot Password?') }}
+                                            <a class="text-success" href="{{ route('register') }}">
+                                                {{ __('Create account') }}
                                             </a>
                                         </div>
                                         @endif
                                     </div>
 
                                     <div class="form-group text-center">
-                                        <button type="submit" class="btn btn-danger btn-user">
+                                        <button type="submit" class="btn btn-success btn-user">
                                             {{ __('Login') }}
                                         </button>
                                     </div>
                                 </form>
 
                                 <div class="text-center mt-5">
-                                    <a class="text-danger" href="{{ route('welcome') }}">{{ __('back to landing page') }}</a>
+                                    <a class="text-success" href="{{ route('welcome') }}">{{ __('back to landing page') }}</a>
                                     <p>v1.1.0</p>
                                 </div>
                             </div>

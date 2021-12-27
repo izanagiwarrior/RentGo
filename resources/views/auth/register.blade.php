@@ -7,7 +7,7 @@
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
                     <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6 d-none d-lg-block" style="background-image: url('{{asset("img/bg_3.jpg")}}')"></div>
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
@@ -56,7 +56,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-success btn-user btn-block">
                                             {{ __('Register') }}
                                         </button>
                                     </div>
@@ -65,7 +65,7 @@
                                 <hr>
 
                                 <div class="text-center">
-                                    <a class="small" href="{{ route('login') }}">
+                                    <a class="small text-success" href="{{ route('login') }}">
                                         {{ __('Already have an account? Login!') }}
                                     </a>
                                 </div>

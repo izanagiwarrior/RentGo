@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 // ============================================================================
 
 Route::get('/', 'PageController@welcome')->name('welcome');
+Route::get('/contact', 'PageController@contact')->name('contact');
 Route::get('/katalog', 'PageController@katalog')->name('katalog');
 Route::get('/toko', 'PageController@showToko')->name('showToko');
 Route::get('/toko/{slug_toko}', 'PageController@toko')->name('toko');
