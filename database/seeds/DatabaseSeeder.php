@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($category as $key => $value) {
-            Categoryeb::create($value);
+            Category::create($value);
         }
     }
 }
