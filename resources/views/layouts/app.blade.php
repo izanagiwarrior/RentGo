@@ -7,8 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>RentGo</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css"
-        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <!-- Script -->
@@ -19,8 +18,7 @@
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet"
-        type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}">
@@ -36,6 +34,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery.timepicker.css') }}">
+    @stack('css')
 
 
     <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
@@ -52,52 +51,44 @@
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
             <a class="navbar-brand" href="index.html">Car<span>Book</span></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item {{ Nav::isRoute('home') }}"><a href="{{ route('home') }}"
-                            class="nav-link">Home</a></li>
-                    <li class="nav-item {{ Nav::isRoute('about') }}"><a href="{{ route('about') }}"
-                            class="nav-link">About</a></li>
-                    <li class="nav-item {{ Nav::isRoute('car') }}"><a href="{{ route('car') }}"
-                            class="nav-link">Cars</a></li>
-                    <li class="nav-item {{ Nav::isRoute('contact') }}"><a href="{{ route('contact') }}"
-                            class="nav-link">Contact</a>
+                    <li class="nav-item {{ Nav::isRoute('home') }}"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
+                    <li class="nav-item {{ Nav::isRoute('about') }}"><a href="{{ route('about') }}" class="nav-link">About</a></li>
+                    <li class="nav-item {{ Nav::isRoute('car') }}"><a href="{{ route('car') }}" class="nav-link">Cars</a></li>
+                    <li class="nav-item {{ Nav::isRoute('contact') }}"><a href="{{ route('contact') }}" class="nav-link">Contact</a>
                     </li>
                     @guest
-                        <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Login</a></li>
-                        @if (Route::has('register'))
-                            <li class="nav-item bg-success rounded text-dark">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
+                    <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Login</a></li>
+                    @if (Route::has('register'))
+                    <li class="nav-item bg-success rounded text-dark">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                    @endif
                     @else
-                        @if (Auth::user()->role == 'admin')
-                            <li class="nav-item {{ Nav::isRoute('contact') }}"><a href="{{ route('admin.home') }}"
-                                    class="nav-link">Admin Dashboard</a>
+                    @if (Auth::user()->role == 'admin')
+                    <li class="nav-item {{ Nav::isRoute('contact') }}"><a href="{{ route('admin.home') }}" class="nav-link">Admin Dashboard</a>
                         @endif
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
                     @endguest
                 </ul>
             </div>
@@ -112,10 +103,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-4 text-lg-start">Copyright &copy; RentGo 2021</div>
                 <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/KampungRotanPKY"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/kampungrotan.id/"><i
-                            class="fab fa-instagram"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/KampungRotanPKY"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/kampungrotan.id/"><i class="fab fa-instagram"></i></a>
                 </div>
                 <div class="col-lg-4 text-lg-end">
                     <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
@@ -131,8 +120,7 @@
                     <div class="fw-bolder">Form submission successful!</div>
                     To activate this form, sign up at
                     <br />
-                    <a
-                        href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
                 </div>
             </div>
         </div>

@@ -25,8 +25,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md d-flex align-self-stretch ftco-animate">
+		<div class="row d-flex justify-content-center">
+			<div class="col-md-2 d-flex align-self-stretch ftco-animate">
 				<div class="media block-6 services">
 					<div class="media-body py-md-4">
 						<div class="d-flex mb-3 align-items-center">
@@ -41,7 +41,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md d-flex align-self-stretch ftco-animate">
+			<div class="col-md-2 d-flex align-self-stretch ftco-animate">
 				<div class="media block-6 services">
 					<div class="media-body py-md-4">
 						<div class="d-flex mb-3 align-items-center">
@@ -56,7 +56,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md d-flex align-self-stretch ftco-animate">
+			<div class="col-md-2 d-flex align-self-stretch ftco-animate">
 				<div class="media block-6 services">
 					<div class="media-body py-md-4">
 						<div class="d-flex mb-3 align-items-center">
@@ -71,7 +71,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md d-flex align-self-stretch ftco-animate">
+			<div class="col-md-2 d-flex align-self-stretch ftco-animate">
 				<div class="media block-6 services">
 					<div class="media-body py-md-4">
 						<div class="d-flex mb-3 align-items-center">
@@ -86,7 +86,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md d-flex align-self-stretch ftco-animate">
+			<div class="col-md-2 d-flex align-self-stretch ftco-animate">
 				<div class="media block-6 services">
 					<div class="media-body py-md-4">
 						<div class="d-flex mb-3 align-items-center">

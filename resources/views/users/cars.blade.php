@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@push('css')
+<link rel="stylesheet" href="{{ asset('css/bootstrap-grid.css') }}">
+@endpush
 @section('content')
 <div class="container-fluid">
     <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('{{asset("img/bg_3.jpg")}}');" data-stellar-background-ratio="0.5">
