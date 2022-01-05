@@ -1,5 +1,6 @@
 <?php
 
+use App\Category;
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Store;
@@ -33,6 +34,21 @@ class DatabaseSeeder extends Seeder
 
         foreach ($user as $key => $value) {
             User::create($value);
+        }
+
+        $category = [
+            [
+                'name' => 'Mobil',
+                'photo' => 'Mobil',
+            ],
+            [
+                'name' => 'Motor',
+                'photo' => 'Motor',
+            ],
+        ];
+
+        foreach ($category as $key => $value) {
+            Categoryeb::create($value);
         }
     }
 }

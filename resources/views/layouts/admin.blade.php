@@ -22,7 +22,9 @@
     <link rel="stylesheet" href="vendor/splide-3.2.1/dist/css/splide.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.4.21/dist/css/splide.min.css" />
 
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
@@ -43,23 +45,21 @@
         <ul class="navbar-nav bg-gradient-white sidebar sidebar-light bg-white accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
                 <div class="sidebar-brand-icon">
-                    <!-- <i class="fas fa-laugh-wink"></i> -->
-                    <img src="{{ asset('img/logo.png')}}" alt="" width="50">
+                    <i class="fas fa-laugh-wink"></i>
                 </div>
-                <!-- <div class="sidebar-brand-text mx-3">
-                    <img src="{{ asset('img/logo cms.png')}}" alt="">
-                </div> -->
-                <!-- <img src="{{ asset('img/logo cms.png')}}" alt=""> -->
+                <div class="sidebar-brand-text mx-3">
+                    Rento
+                </div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item {{ Nav::isRoute('home') }}">
-                <a class="nav-link" href="{{ route('home') }}">
+            <li class="nav-item {{ Nav::isRoute('admin.home') }}">
+                <a class="nav-link" href="{{ route('admin.home') }}">
                     <i class="fas fa-fw fa-home"></i>
                     <span>{{ __('Home') }}</span></a>
             </li>
@@ -77,6 +77,13 @@
                 <a class="nav-link" href="{{ route('product') }}">
                     <i class="fas fa-fw fa-shopping-bag"></i>
                     <span>{{ __('Product') }}</span></a>
+            </li>
+
+            <!-- Nav Item - Product -->
+            <li class="nav-item {{ Nav::isRoute('order*') }}">
+                <a class="nav-link" href="{{ route('order') }}">
+                    <i class="fas fa-fw fa-shopping-cart"></i>
+                    <span>{{ __('Order') }}</span></a>
             </li>
 
             <!-- Divider -->
@@ -98,54 +105,30 @@
             <!-- Admin Only -->
             @if (Auth::user() && Auth::user()->role == 'admin')
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+                <!-- Divider -->
+                <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                {{ __('Admin') }}
-            </div>
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    {{ __('Admin') }}
+                </div>
 
-            <!-- Nav Item - Category -->
-            <li class="nav-item {{ Nav::isRoute('category*') }}">
-                <a class="nav-link" href="{{ route('category') }}">
-                    <i class="fas fa-fw fa-filter"></i>
-                    <span>{{ __('Category') }}</span></a>
-            </li>
+                <!-- Nav Item - Category -->
+                <li class="nav-item {{ Nav::isRoute('category*') }}">
+                    <a class="nav-link" href="{{ route('category') }}">
+                        <i class="fas fa-fw fa-filter"></i>
+                        <span>{{ __('Category') }}</span></a>
+                </li>
 
-            <!-- Nav Item - Users -->
-            <li class="nav-item {{ Nav::isRoute('user*') }}">
-                <a class="nav-link" href="{{ route('user') }}">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>{{ __('Users') }}</span>
-                </a>
-            </li>
+                <!-- Nav Item - Users -->
+                <li class="nav-item {{ Nav::isRoute('user*') }}">
+                    <a class="nav-link" href="{{ route('user') }}">
+                        <i class="fas fa-fw fa-user"></i>
+                        <span>{{ __('Users') }}</span>
+                    </a>
+                </li>
 
             @endif
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                {{ __('Others') }}
-            </div>
-
-            <!-- Nav Item - About -->
-            <li class="nav-item {{ Nav::isRoute('about*') }}">
-                <a class="nav-link" href="{{ route('about') }}">
-                    <i class="fas fa-fw fa-question"></i>
-                    <span>{{ __('About') }}</span>
-                </a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
 
         </ul>
         <!-- End of Sidebar -->
@@ -157,7 +140,8 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-dark topbar mb-4 static-top shadow" style="background-color: #EC5863;">
+                <nav class="navbar navbar-expand navbar-dark topbar mb-4 static-top shadow"
+                    style="background-color: #EC5863;">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -169,14 +153,18 @@
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -188,16 +176,21 @@
                         </li>
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-200 small">{{ Auth::user()->name }}</span>
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-200 small">{{ Auth::user()->name }}</span>
                                 @if (isset(Auth::user()->photo))
-                                <img src="{{asset('storage/' . Auth::user()->photo)}}" alt="" class="img-profile rounded-circle avatar font-weight-bold">
+                                    <img src="{{ asset('storage/' . Auth::user()->photo) }}" alt=""
+                                        class="img-profile rounded-circle avatar font-weight-bold">
                                 @else
-                                <figure class="img-profile rounded-circle avatar font-weight-bold" data-initial="{{ Auth::user()->name[0] }}"></figure>
+                                    <figure class="img-profile rounded-circle avatar font-weight-bold"
+                                        data-initial="{{ Auth::user()->name[0] }}"></figure>
                                 @endif
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="{{ route('profile') }}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     {{ __('Profile') }}
@@ -247,7 +240,8 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -259,7 +253,8 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-link" type="button" data-dismiss="modal">{{ __('Cancel') }}</button>
-                    <a class="btn btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                    <a class="btn btn-danger" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>

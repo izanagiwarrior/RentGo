@@ -59,20 +59,27 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item {{ Nav::isRoute('home') }}"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
-                    <li class="nav-item {{ Nav::isRoute('about') }}"><a href="{{ route('about') }}" class="nav-link">About</a></li>
-                    <li class="nav-item {{ Nav::isRoute('car') }}"><a href="{{ route('car') }}" class="nav-link">Cars</a></li>
-                    <li class="nav-item {{ Nav::isRoute('contact') }}"><a href="{{ route('contact') }}" class="nav-link">Contact</a>
+                    <li class="nav-item {{ Nav::isRoute('home') }}"><a href="{{ route('home') }}"
+                            class="nav-link">Home</a></li>
+                    <li class="nav-item {{ Nav::isRoute('about') }}"><a href="{{ route('about') }}"
+                            class="nav-link">About</a></li>
+                    <li class="nav-item {{ Nav::isRoute('car') }}"><a href="{{ route('car') }}"
+                            class="nav-link">Cars</a></li>
+                    <li class="nav-item {{ Nav::isRoute('contact') }}"><a href="{{ route('contact') }}"
+                            class="nav-link">Contact</a>
                     </li>
                     @guest
-                        <li class="nav-item"><a href="{{ route('login') }}"
-                                class="nav-link">Login</a></li>
+                        <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Login</a></li>
                         @if (Route::has('register'))
                             <li class="nav-item bg-success rounded text-dark">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
+                        @if (Auth::user()->role == 'admin')
+                            <li class="nav-item {{ Nav::isRoute('contact') }}"><a href="{{ route('admin.home') }}"
+                                    class="nav-link">Admin Dashboard</a>
+                        @endif
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -81,7 +88,7 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
+                                                                     document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 

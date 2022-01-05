@@ -61,6 +61,16 @@ Route::middleware('auth')->group(function () {
         // About
         Route::get('/about', 'Controller@about')->name('admin.about');
 
+        // Order
+        Route::prefix('order')->name('order')->group(function () {
+            Route::get('/', 'OrderController@index')->name('');
+            Route::get('/create', 'OrderController@create_view')->name('.create');
+            Route::post('/create', 'OrderController@create_process')->name('.create.process');
+            Route::get('/update/{id}', 'OrderController@update_view')->name('.update');
+            Route::post('/update/{id}', 'OrderController@update_process')->name('.update.process');
+            Route::get('/delete/{id}', 'OrderController@delete')->name('.delete');
+        });
+
         // Product
         Route::prefix('product')->name('product')->group(function () {
             Route::get('/', 'ProductsController@index')->name('');
