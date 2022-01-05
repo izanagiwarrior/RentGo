@@ -21,7 +21,6 @@ Route::get('/', 'PageController@welcome')->name('home');
 Route::get('/contact', 'PageController@contact')->name('contact');
 Route::get('/car', 'PageController@car')->name('car');
 Route::get('/about', 'PageController@about')->name('about');
-Route::get('/car/{id}', 'PageController@car_detail')->name('detailCar');
 
 
 
@@ -41,6 +40,10 @@ Route::middleware('auth')->group(function () {
 
 
     // ================================ USER =================================
+
+
+    Route::get('/car/{id}', 'PageController@car_detail')->name('detailCar');
+    Route::post('/car/{id}', 'PageController@order')->name('order');
 
     // Profile
     Route::prefix('profile')->name('profile')->group(function () {

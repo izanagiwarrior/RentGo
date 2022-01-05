@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Order;
 use Illuminate\Http\Request;
 use App\Products;
 use App\Store;
 use App\User;
 use App\View;
-
+use Illuminate\Support\Facades\Auth;
 class PageController extends Controller
 {
     public function welcome(Request $request)
@@ -28,15 +29,31 @@ class PageController extends Controller
     }
 
     public function car(){
-        return view('users.cars');
+        $data = Products::all();
+        return view('users.cars',compact('data'));
     }
 
     public function about(){
         return view('users.about');
     }
 
-    public function car_detail(){
-        return view('detailCar');
+    public function car_detail($id){
+        $product = Products::find($id);
+        $data = Products::all();
+        return view('detailCar',compact('product','data'));
+    }
+
+    public function order(Request $request,$id){
+        $product = Products::find($id);
+        $order = new Order();
+        $order->id_product = $id;
+        $order->id_user = Auth::user()->id;
+        $order->duration = $request->duration;
+        $order->start = $request->start;
+        $order->notes = "";
+        $order->price = $product->price * $request->duration;
+        $order->save();
+        return view('cart');
     }
 
     public function katalog(Request $request, $search = "")
