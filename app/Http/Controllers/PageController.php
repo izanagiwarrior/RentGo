@@ -28,6 +28,11 @@ class PageController extends Controller
         return view('users.contact');
     }
 
+    public function cart(){
+        $order = Order::all();
+        return view('cart', compact('order'));
+    }
+
     public function car(){
         $data = Products::all();
         return view('users.cars',compact('data'));
