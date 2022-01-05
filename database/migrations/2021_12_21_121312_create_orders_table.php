@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('id_product');
             $table->unsignedInteger('id_user');
             $table->integer('duration');
+            $table->date('start');
             $table->string('notes');
             $table->integer('price');
             $table->enum('status', ['cart', 'payment process', 'order process', 'done', 'cancel'])->default('cart');
