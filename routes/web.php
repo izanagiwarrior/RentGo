@@ -17,8 +17,12 @@ use Illuminate\Support\Facades\Route;
 // =============================== P U B L I C ================================
 // ============================================================================
 
-Route::get('/', 'PageController@welcome')->name('welcome');
+Route::get('/', 'PageController@welcome')->name('home');
 Route::get('/contact', 'PageController@contact')->name('contact');
+Route::get('/car', 'PageController@car')->name('car');
+Route::get('/about', 'PageController@about')->name('about');
+
+
 Route::get('/katalog', 'PageController@katalog')->name('katalog');
 Route::get('/toko', 'PageController@showToko')->name('showToko');
 Route::get('/toko/{slug_toko}', 'PageController@toko')->name('toko');
@@ -34,26 +38,7 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
 
 
-    // ================================ CRAFTER =================================
-
-    // Admin Home
-    Route::get('/home', 'HomeController@index')->name('home');
-
-    // Dashboard
-    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-
-    // About
-    Route::get('/about', 'Controller@about')->name('about');
-
-    // Product
-    Route::prefix('product')->name('product')->group(function () {
-        Route::get('/', 'ProductsController@index')->name('');
-        Route::get('/create', 'ProductsController@create_view')->name('.create');
-        Route::post('/create', 'ProductsController@create_process')->name('.create.process');
-        Route::get('/update/{id}', 'ProductsController@update_view')->name('.update');
-        Route::post('/update/{id}', 'ProductsController@update_process')->name('.update.process');
-        Route::get('/delete/{id}', 'ProductsController@delete')->name('.delete');
-    });
+    // ================================ USER =================================
 
     // Profile
     Route::prefix('profile')->name('profile')->group(function () {
@@ -65,7 +50,36 @@ Route::middleware('auth')->group(function () {
 
     // ================================ A D M I N =================================
 
-    Route::middleware('admin')->group(function () {
+    Route::middleware('admin')->prefix('admin')->group(function () {
+
+        // Admin Home
+        Route::get('/home', 'HomeController@index')->name('admin.home');
+
+        // Dashboard
+        Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+        // About
+        Route::get('/about', 'Controller@about')->name('admin.about');
+
+        // Order
+        Route::prefix('order')->name('order')->group(function () {
+            Route::get('/', 'OrderController@index')->name('');
+            Route::get('/create', 'OrderController@create_view')->name('.create');
+            Route::post('/create', 'OrderController@create_process')->name('.create.process');
+            Route::get('/update/{id}', 'OrderController@update_view')->name('.update');
+            Route::post('/update/{id}', 'OrderController@update_process')->name('.update.process');
+            Route::get('/delete/{id}', 'OrderController@delete')->name('.delete');
+        });
+
+        // Product
+        Route::prefix('product')->name('product')->group(function () {
+            Route::get('/', 'ProductsController@index')->name('');
+            Route::get('/create', 'ProductsController@create_view')->name('.create');
+            Route::post('/create', 'ProductsController@create_process')->name('.create.process');
+            Route::get('/update/{id}', 'ProductsController@update_view')->name('.update');
+            Route::post('/update/{id}', 'ProductsController@update_process')->name('.update.process');
+            Route::get('/delete/{id}', 'ProductsController@delete')->name('.delete');
+        });
 
         // Categories
         Route::prefix('category')->name('category')->group(function () {

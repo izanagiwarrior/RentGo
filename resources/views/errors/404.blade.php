@@ -26,7 +26,7 @@
                                 @endif
 
                                 <div class="text-center mt-5">
-                                    <a class="button btn btn-danger" href="{{ route('welcome') }}">{{ __('back to landing page') }}</a>
+                                    <a class="button btn btn-danger" href="{{ route('home') }}">{{ __('back to landing page') }}</a>
                                 </div>
 
 

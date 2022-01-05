@@ -27,6 +27,14 @@ class PageController extends Controller
         return view('users.contact');
     }
 
+    public function car(){
+        return view('users.cars');
+    }
+
+    public function about(){
+        return view('users.about');
+    }
+
     public function katalog(Request $request, $search = "")
     {
         $product = Products::paginate(8);
