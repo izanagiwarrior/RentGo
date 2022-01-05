@@ -5856,7 +5856,8 @@ button.bg-dark:focus {
 .align-self-stretch {
   -ms-flex-item-align: stretch !important;
   -ms-grid-row-align: stretch !important;
-  align-self: stretch !important; }
+  align-self: stretch !important; 
+}
 
 @media (min-width: 576px) {
   .flex-sm-row {
