@@ -53,7 +53,7 @@
                                 </form>
 
                                 <div class="text-center mt-5">
-                                    <a class="text-success" href="{{ route('welcome') }}">{{ __('back to landing page') }}</a>
+                                    <a class="text-success" href="{{ route('home') }}">{{ __('back to landing page') }}</a>
                                     <p>v1.1.0</p>
                                 </div>
                             </div>
