@@ -21,6 +21,8 @@ Route::get('/', 'PageController@welcome')->name('home');
 Route::get('/contact', 'PageController@contact')->name('contact');
 Route::get('/car', 'PageController@car')->name('car');
 Route::get('/about', 'PageController@about')->name('about');
+Route::get('/car/{id}', 'PageController@car_detail')->name('detailCar');
+
 
 
 Route::get('/katalog', 'PageController@katalog')->name('katalog');
