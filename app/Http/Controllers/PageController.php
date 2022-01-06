@@ -56,6 +56,6 @@ class PageController extends Controller
         $order->save();
 
         $order = Order::where('id_user',"=",Auth::user()->id)->get();
-        return view('cart', compact('order'));
+        return redirect(route('cart',compact('order')));
     }
 }
