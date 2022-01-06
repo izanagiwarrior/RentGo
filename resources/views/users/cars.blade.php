@@ -10,7 +10,7 @@
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
                     <div class="col-md-9 ftco-animate pb-5">
-                        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i
+                        <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('home') }}">Home <i
                                         class="ion-ios-arrow-forward"></i></a></span> <span>Cars <i
                                     class="ion-ios-arrow-forward"></i></span></p>
                         <h1 class="mb-3 bread">Choose Your Car</h1>
@@ -30,7 +30,7 @@
                                     style="background-image: url('{{ asset('storage/' . $dt->photo) }}');"></div>
                                 <div class="text">
                                     <h2 class="mb-0" style="color: #000"><a
-                                            href="car-single.html">{{ $dt->title }}</a></h2>
+                                            href="{{ route('detailCar', $dt->id) }}">{{ $dt->title }}</a></h2>
                                     <div class="d-flex mb-3">
                                         <p class="price ml-auto">{{ "Rp " . number_format($dt->price,2,',','.') }} <span>/day</span></p>
                                     </div>

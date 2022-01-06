@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
                 <div class="col-md-9 ftco-animate pb-5">
-                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i
+                    <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('home') }}">Home <i
                                     class="ion-ios-arrow-forward"></i></a></span> <span>Car details <i
                                 class="ion-ios-arrow-forward"></i></span></p>
                     <h1 class="mb-3 bread">Car Details</h1>
@@ -29,7 +29,8 @@
                                     <span>/day</span></span>
                                 <h2>{{ $product->title }}</h2>
                             </div>
-                            <form action="{{ route('order',$product->id) }}" method="post">
+                            <form action="{{ route('user.order', $product->id) }}" method="post">
+                                @csrf
                                 <div class="form-group">
                                     <label class="form-control-label" for="start">{{ __('Start Date') }}<span
                                             class="small text-danger">*</span></label>
@@ -373,51 +374,26 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="car-wrap rounded ftco-animate">
-                        <div class="img rounded d-flex align-items-end" style="background-image: url(images/car-1.jpg);">
-                        </div>
-                        <div class="text">
-                            <h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
-                            <div class="d-flex mb-3">
-                                <span class="cat">Cheverolet</span>
-                                <p class="price ml-auto">$500 <span>/day</span></p>
+                @foreach ($data as $dt)
+                    <div class="col-md-4">
+                        <div class="car-wrap rounded ftco-animate">
+                            <div class="img rounded d-flex align-items-end"
+                                style="background-image: url({{ asset('storage/' . $dt->photo) }});">
                             </div>
-                            <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a
-                                    href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                            <div class="text">
+                                <h2 class="mb-0"><a href="#">{{ $dt->title }}</a></h2>
+                                <div class="d-flex mb-3">
+                                    <p class="price ml-auto">
+                                        {{ 'Rp ' . number_format($dt->price, 2, ',', '.') }}<span>/day</span></p>
+                                </div>
+                                <div class="text-center">
+                                    <a href="{{ route('detailCar', $dt->id) }}" class="btn btn-primary py-2 mr-1">Book
+                                        now</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="car-wrap rounded ftco-animate">
-                        <div class="img rounded d-flex align-items-end" style="background-image: url(images/car-2.jpg);">
-                        </div>
-                        <div class="text">
-                            <h2 class="mb-0"><a href="car-single.html">Range Rover</a></h2>
-                            <div class="d-flex mb-3">
-                                <span class="cat">Subaru</span>
-                                <p class="price ml-auto">$500 <span>/day</span></p>
-                            </div>
-                            <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a
-                                    href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="car-wrap rounded ftco-animate">
-                        <div class="img rounded d-flex align-items-end" style="background-image: url(images/car-3.jpg);">
-                        </div>
-                        <div class="text">
-                            <h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
-                            <div class="d-flex mb-3">
-                                <span class="cat">Cheverolet</span>
-                                <p class="price ml-auto">$500 <span>/day</span></p>
-                            </div>
-                            <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a
-                                    href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -428,7 +404,7 @@
             <div class="row mb-5">
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2"><a href="#" class="logo">Car<span>book</span></a></h2>
+                        <h2 class="ftco-heading-2"><a href="#" class="logo">Rent<span>Go</span></a></h2>
                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
                             live the blind texts.</p>
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">

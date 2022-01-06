@@ -12940,7 +12940,6 @@ body.sidebar-toggled footer.sticky-footer {
 
 /*# sourceMappingURL=sb-admin-2.min.css.map */
 
-/* css custom by kampung rotan */
 .bg-login {
     background-image: url("../img/il_login.png");
     background-repeat: no-repeat;
@@ -13011,5 +13010,4 @@ body.sidebar-toggled footer.sticky-footer {
 
 #map {
     height: 500px;
-}  
-/* end css custom by kampung rotan */
+}

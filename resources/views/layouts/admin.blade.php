@@ -86,22 +86,6 @@
                     <span>{{ __('Order') }}</span></a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                {{ __('Coming Soon') }}
-            </div>
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item {{ Nav::isRoute('dashboard*') }}">
-                <a class="nav-link" href="{{ route('dashboard') }}">
-                    <i class="fas fa-fw fa-chart-line"></i>
-                    <span>{{ __('Dashboard') }} (Preview)</span>
-                </a>
-            </li>
-
             <!-- Admin Only -->
             @if (Auth::user() && Auth::user()->role == 'admin')
 

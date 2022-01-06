@@ -113,7 +113,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label class="form-control-label" for="price">{{ __('Product Price') }}<span class="small text-danger">*</span></label>
+                                    <label class="form-control-label" for="price">{{ __('Product Price / Day') }}<span class="small text-danger">*</span></label>
                                     <input type="number" id="price" class="form-control" name="price" value="{{ $data->price }}" placeholder="input price...">
                                 </div>
                             </div>

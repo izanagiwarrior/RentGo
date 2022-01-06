@@ -50,7 +50,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Car<span>Book</span></a>
+            <a class="navbar-brand" href="{{ route('home') }}">Rent<span>Go</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
@@ -71,8 +71,9 @@
                     @endif
                     @else
                     @if (Auth::user()->role == 'admin')
-                    <li class="nav-item {{ Nav::isRoute('contact') }}"><a href="{{ route('admin.home') }}" class="nav-link">Admin Dashboard</a>
-                        @endif
+                    <li class="nav-item {{ Nav::isRoute('contact') }}"><a href="{{ route('admin.home') }}" class="nav-link">Admin Dashboard</a></li>
+                    @endif
+                    <li class="nav-item {{ Nav::isRoute('cart') }}"><a href="{{ route('cart') }}" class="nav-link">Cart</a>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
@@ -103,8 +104,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-4 text-lg-start">Copyright &copy; RentGo 2021</div>
                 <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/KampungRotanPKY"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/kampungrotan.id/"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href=""><i class="fab fa-instagram"></i></a>
                 </div>
                 <div class="col-lg-4 text-lg-end">
                     <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>

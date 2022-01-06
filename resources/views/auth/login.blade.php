@@ -11,7 +11,7 @@
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center mb-4">
-                                    <p class="text-title-login">login to <a class="navbar-brand text-dark" href="index.html">Car<span class="text-success">Book</span></a></p>
+                                    <p class="text-title-login">login to <a class="navbar-brand text-dark" href="{{ route('home') }}">Rent<span class="text-success">Go</span></a></p>
                                 </div>
 
                                 @if ($errors->any())

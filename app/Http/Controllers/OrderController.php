@@ -3,17 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Order;
-use App\Category;
 use App\Products;
-use App\Store;
 use App\User;
 use Illuminate\Http\Request;
 
 use DataTables;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 
 class OrderController extends Controller
 {
@@ -74,7 +68,7 @@ class OrderController extends Controller
     public function delete($id)
     {
 
-        $order = Products::find($id);
+        $order = Order::find($id);
         $order->delete();
 
         return redirect()->route('order')->withSuccess('Order deleted successfully.');

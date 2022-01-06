@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->date('start');
             $table->string('notes');
             $table->integer('price');
-            $table->enum('status', ['cart', 'payment process', 'order process', 'done', 'cancel'])->default('cart');
+            $table->enum('status', ['order process', 'done', 'cancel'])->default('order process');
             $table->timestamps();
             $table->softDeletes();
 

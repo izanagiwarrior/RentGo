@@ -21,15 +21,6 @@ Route::get('/', 'PageController@welcome')->name('home');
 Route::get('/contact', 'PageController@contact')->name('contact');
 Route::get('/car', 'PageController@car')->name('car');
 Route::get('/about', 'PageController@about')->name('about');
-Route::get('/cart', 'PageController@cart')->name('cart');
-
-
-
-Route::get('/katalog', 'PageController@katalog')->name('katalog');
-Route::get('/toko', 'PageController@showToko')->name('showToko');
-Route::get('/toko/{slug_toko}', 'PageController@toko')->name('toko');
-Route::get('/detail-produk/{id_product}', 'PageController@detailProduk')->name('detailProduk');
-Route::get('/show/{id}', 'PageController@show')->name('show');
 
 // ============================================================================
 // ================================ L O G I N =================================
@@ -44,7 +35,8 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/car/{id}', 'PageController@car_detail')->name('detailCar');
-    Route::post('/car/{id}', 'PageController@order')->name('order');
+    Route::post('/car/{id}', 'PageController@order')->name('user.order');
+    Route::get('/cart', 'PageController@cart')->name('cart');
 
     // Profile
     Route::prefix('profile')->name('profile')->group(function () {
@@ -59,10 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('admin')->prefix('admin')->group(function () {
 
         // Admin Home
-        Route::get('/home', 'HomeController@index')->name('admin.home');
-
-        // Dashboard
-        Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+        Route::get('/home', 'DashboardController@index')->name('admin.home');
 
         // About
         Route::get('/about', 'Controller@about')->name('admin.about');
@@ -70,8 +59,6 @@ Route::middleware('auth')->group(function () {
         // Order
         Route::prefix('order')->name('order')->group(function () {
             Route::get('/', 'OrderController@index')->name('');
-            Route::get('/create', 'OrderController@create_view')->name('.create');
-            Route::post('/create', 'OrderController@create_process')->name('.create.process');
             Route::get('/update/{id}', 'OrderController@update_view')->name('.update');
             Route::post('/update/{id}', 'OrderController@update_process')->name('.update.process');
             Route::get('/delete/{id}', 'OrderController@delete')->name('.delete');

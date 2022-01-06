@@ -17,7 +17,7 @@
                         <div class="card shadow h-100 pb-2 w-75 mx-auto">
                             <div class="card-body text-center">
                                 <h2 class="text-center font-weight-bold">Email</h2>
-                                <p>kampungrotanid@gmail.com</p>
+                                <p>rentgo@gmail.com</p>
                             </div>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                         <div class="card shadow h-100 pb-2 w-75 mx-auto">
                             <div class="card-body text-center">
                                 <h2 class="text-center font-weight-bold">Phone</h2>
-                                <p>+6281235864246</p>
+                                <p>+0812345678</p>
                             </div>
                         </div>
                     </div>
@@ -35,8 +35,7 @@
                         <div class="card shadow h-100 pb-2 w-75 mx-auto">
                             <div class="card-body text-center">
                                 <h2 class="text-center font-weight-bold">Address</h2>
-                                <p>Disperindag Kota Palangka Raya
-                                    Bukit Tunggal, Jekan Raya, Palangka Raya City, Central Kalimantan 74874</p>
+                                <p>Bandung</p>
                             </div>
                         </div>
                     </div>
