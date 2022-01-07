@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->date('start');
             $table->string('notes');
             $table->integer('price');
+            $table->string('bukti')->nullable();
             $table->enum('status', ['order process', 'done', 'cancel'])->default('order process');
             $table->timestamps();
             $table->softDeletes();

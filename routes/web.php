@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/car/{id}', 'PageController@car_detail')->name('detailCar');
     Route::post('/car/{id}', 'PageController@order')->name('user.order');
     Route::get('/cart', 'PageController@cart')->name('cart');
+    Route::post('/upload-image/{id}', 'PageController@uploadimage')->name('upload.image');
 
     // Profile
     Route::prefix('profile')->name('profile')->group(function () {

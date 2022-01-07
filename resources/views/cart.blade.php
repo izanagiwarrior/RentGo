@@ -31,6 +31,7 @@ use App\Products;
                             <th>Duration</th>
                             <th>Total Price</th>
                             <th>Status</th>
+                            <th>Bukti</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,6 +46,43 @@ use App\Products;
                                 <td>{{ $or->duration }} Days</td>
                                 <td>{{ 'Rp ' . number_format($or->price, 2, ',', '.') }}</td>
                                 <td>{{ $or->status }}</td>
+                                @if ($or->bukti)
+                                    <td><a href="{{ asset('storage/' . $or->bukti) }}" target="_blank">Lihat Bukti</a></td>
+                                @else
+                                    <td><a href="" class="btn btn-primary btn-rounded mb-4" data-toggle="modal"
+                                            data-target="#modalLoginForm{{ $or->id }}" data-id="{{ $or->id }}">Upload Bukti</a>
+                                    </td>
+
+                                    <div class="modal fade" id="modalLoginForm{{ $or->id }}" tabindex="-1" role="dialog"
+                                        aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <form action="{{ route('upload.image',$or->id) }}" method="post" autocomplete="off" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="modal-header text-center">
+                                                        <h4 class="modal-title w-100 font-weight-bold">Upload Image</h4>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body mx-3">
+                                                        <div class="md-form mb-5">
+                                                            <input type="file" name="foto" id="defaultForm-email"
+                                                                class="form-control validate">
+                                                            <label data-error="wrong" data-success="right"
+                                                                for="defaultForm-email">Upload Image</label>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="modal-footer d-flex justify-content-center">
+                                                        <button type=submit class="btn btn-default">Upload</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>
@@ -52,6 +90,5 @@ use App\Products;
             </div>
         </div>
     </section>
-
 
 @endsection

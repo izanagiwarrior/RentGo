@@ -33,6 +33,12 @@
                         name: 'status',
                     },
                     {
+                        data: 'bukti',
+                        name: 'bukti',
+                        orderable: false,
+                        searchable: false,
+                    },
+                    {
                         data: 'action',
                         name: 'action',
                         orderable: false,
@@ -93,6 +99,7 @@
                                 <th>Start</th>
                                 <th>Duration</th>
                                 <th>Status</th>
+                                <th>Bukti</th>
                                 <th width="100px">Action</th>
                             </tr>
                         </thead>

@@ -28,8 +28,15 @@ class OrderController extends Controller
                     return $button;
                 })->addColumn('name', function ($data) {
                     return User::find($data->id_user)->name;
+                })->addColumn('bukti', function ($data) {
+                    if ($data->bukti) {
+                        $asset = asset('storage/' . $data->bukti);
+                        return "<a href=" . $asset . " target=" . "_blank" . ">Lihat Bukti</a>";
+                    } else {
+                        return 'Belum Upload Bukti';
+                    }
                 })
-                ->rawColumns(['action','name'])
+                ->rawColumns(['action', 'name', 'bukti'])
                 ->make(true);
         }
 
@@ -47,7 +54,7 @@ class OrderController extends Controller
         $data = Order::find($id);
         $user = User::find($data->id_user);
         $product = Products::find($data->id_product);
-        return view('cms.order.update', compact('data','user','product'));
+        return view('cms.order.update', compact('data', 'user', 'product'));
     }
 
     public function update_process(Request $request, $id)

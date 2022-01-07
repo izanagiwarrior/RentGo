@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                     <div class="car-details">
                         <div class="col-md-6">
-                            <div class="img rounded" style="background-image: url({{ asset('img/bg_1.jpg') }})"></div>
+                            <div class="img rounded" style="background-image: url({{ asset('storage/' . $product->photo) }})"></div>
                         </div>
                         <div class="col-md-6">
                             <div class="text text-center">

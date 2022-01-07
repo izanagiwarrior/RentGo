@@ -6,6 +6,8 @@ use App\Order;
 use Illuminate\Http\Request;
 use App\Products;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 class PageController extends Controller
 {
     public function welcome(Request $request)
@@ -56,6 +58,16 @@ class PageController extends Controller
         $order->save();
 
         $order = Order::where('id_user',"=",Auth::user()->id)->get();
+        return redirect(route('cart',compact('order')));
+    }
+
+    public function uploadimage(Request $request,$id){
+        $order = Order::find($id);
+        $order->bukti = Storage::disk('public')->put('order', $request->file('foto'));
+        $order->save();
+
+        $order = Order::where('id_user',"=",Auth::user()->id)->get();
+        
         return redirect(route('cart',compact('order')));
     }
 }
